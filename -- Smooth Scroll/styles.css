@@ -181,12 +181,18 @@ h2 {
 }
 
 
-/* RESPNSIVE  */
+.submenu-three {
+  display: none;
+}
+
+/* RESPONSIVE  */
 /* Styles for screens with a maximum width of 600px */
 @media screen and (max-width: 600px) {
   .flex {
     flex-direction: column;
   }
+
+
 
   nav i {
     color: white;
@@ -201,6 +207,11 @@ h2 {
     transition: all .5s;
   }
 
+  .close:hover {
+    color: red;
+  }
+
+  /* 
   .nav-list {
     text-align: center;
     flex-direction: column;
@@ -232,17 +243,145 @@ h2 {
 }
 
 /* Styles for screens with a minimum width of 601px (larger screens) */
-@media screen and (min-width: 601px) {
-  nav i {
-    display: none;
-    /* Hide menu icons on larger screens */
+  .hamburger {
+    z-index: 11;
+  }
+
+
+  .hamburger:hover {
+    color: green;
+  }
+
+  .nav-list,
+  .nav-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding-top: 2rem;
+    transform: translateY(200%);
+    display: block;
+    transition: all .5s;
+  }
+
+
+  .nav-list {
+    z-index: 1;
+  }
+
+  .nav-wrapper {
+    width: 100%;
+    transform: translateY(-200%);
+    z-index: 1;
+  }
+
+  .nav-list li {
+    border-bottom: 1px solid white;
+    padding: .7rem 0 .7rem 1rem;
+  }
+
+  .nav-list li a {
+    color: white;
+    transition: all .3s;
+  }
+
+  .nav-list li :hover {
+    margin-left: 1rem;
+  }
+
+  .nav-list li a:hover {
+    color: var(--color-sec);
+    margin-left: 1rem;
+  }
+
+
+  /* Submenu CSS */
+  .three {
+    position: relative;
+
+  }
+
+  .fa-angle-right {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    font-size: 2rem;
+    transform: translateY(-50%);
+  }
+
+  .nav-list li a {
+    display: block;
+  }
+
+  .nav-list li a:hover~.fa-angle-right {
+    color: var(--color-sec);
+  }
+
+
+  .submenu-three {
+    transform: translateX(0);
+    transition: all .3s;
+  }
+
+  .submenu-three .back {
+    display: flex;
+  }
+
+
+  .fa-angle-left {
+    font-size: 1.5rem;
+    padding-top: 5px;
+
   }
 }
 
-@media only screen and (max-width: 768px) {
 
-  /* Hide menu icons on larger screens */
-  .menu-icon {
-    display: none;
+@media screen and (max-width: 600px) {
+  flex {
+    display: flex;
+    flex-direction: column;
   }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  width: 100%;
+  height: 3px;
+  background-color: grey;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+}
+
+.progress {
+  width: 5%;
+  height: 5px;
+  background-color: green;
+
+}
+
+
+/* Newsletter Section  */
+.newsletter {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  border: 2px dashed var(--color-primary);
+  padding: 2rem 3rem;
+  transform: translateV(-100%);
+  transition: all .5s;
+}
+
+.fa-times {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-size: 1.4rem;
+  color: red;
+  cursor: pointer;
 }

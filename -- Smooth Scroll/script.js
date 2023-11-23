@@ -10,7 +10,7 @@ function smoothScroll(e) {
   document.querySelector(href).scrollIntoView({
     behavior: "smooth",
   });
-  hideMenu();
+  // hideMenu();
 }
 
 
@@ -82,8 +82,52 @@ const showMenu = () => {
 const hideMenu = () => {
   close.style.transform = "translateY(-20rem)";
   hamburger.style.display = "block";
-  menu.style.transform = "translateY(-200%)";
+  menu.style.transform = "translateX(200%)";
+  // menuWrapper.style.transform = "translateX(-200%)";
 
-}
+};
+
 hamburger.addEventListener("click", showMenu);
 close.addEventListener("click", hideMenu);
+// menuWrapper.addEventListener("click", hideMenu);
+
+
+
+
+// Scroll Progress Indicator
+window.onscroll = () => scrollProgress();
+
+function scrollProgress() {
+  const currentScroll = window.scrollY || document.documentElement.scrollTop;
+  const pageHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+  const scrollPercentage = (currentScroll / pageHeight) * 100;
+  const progressBar = document.querySelector(".progress");
+
+  progressBar.style.visibility = "visible";
+
+  progressBar.style.width = scrollPercentage + "%";
+}
+
+
+
+/* Newsletter Section  */
+
+const newsLetter = document.querySelector(".newsLetter");
+
+if (scrollPercentage > 80) {
+  newsLetter.style.transform = "translateX(0)"
+} else {
+  newsLetter.style.transform = "translateX(-100%)"
+
+
+  document.querySelector(".fa-times").addEventListener("click", () => {
+    newsLetter.style.transform = "translateX(-100%)"
+  });
+}
+
+
+// Animate on Scroll
+AOS.init({
+  duration: 1000,
+});
